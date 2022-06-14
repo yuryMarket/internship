@@ -34,6 +34,7 @@ jobs:
     env:
       month: january
       DAY__OF_THE_MONTH: Monday
+      my_favorite_day: ${{ secrets.FAVORITE_DAY_OF_WEEK }}
     
     steps:  
          
@@ -47,6 +48,4 @@ jobs:
             echo  "Year - ${{ env.YEAR }}"
  
         - name: Print “My favorite day of week"
-          env: 
-            my_favourite_day: ${{ secrets.FAVORITE_DAY_OF_WEEK }}
-          run:  echo "My favorite day of week is $my_favourite_day
+          run:  echo "My favorite day of week is ${{ env.my_favorite_day }}
