@@ -31,22 +31,22 @@ jobs:
   job2:
     runs-on: ubuntu-latest
     needs: [job1]
-#   env:
-#     month: january
+    env:
+      month: january
     
     steps:  
-#       - name: Contain day of the month
-#         env:
-#           DAY__OF_THE_MONTH: Monday
+        - name: Contain day of the month
+          env:
+            DAY__OF_THE_MONTH: Monday
  
         - name: Print the system date and time 
           run: date
 
-#       - name: Print day, month, year
-#         run:|
-#           echo " Day - $DAY__OF_THE_MONTH"
-#           echo "Month -$month"
-#           echo  "Year - ${{ env.YEAR }}"
+        - name: Print day, month, year
+          run:|
+            echo " Day - ${{ env.DAY__OF_THE_MONTH}}"
+            echo " Month -${{ env.month }}"
+            echo  "Year - ${{ env.YEAR }}"
  
 #       - name: Print “My favorite day of week"
 #         run:  echo "My favorite day of week is “content of FAVORITE_DAY_OF_WEEK””
