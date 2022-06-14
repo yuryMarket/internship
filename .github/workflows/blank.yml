@@ -22,9 +22,9 @@ jobs:
       - name: Print the list of files/directories 
         run: ls -a
 
-#      - name: Print content of log.txt file.
-#        run: cat log.txt
-# 
+      - name: Print content of log.txt file.
+        run: cat Task1/log.txt
+  
       - name: Print Hello from 
         run:  echo “Hello from ${{ env.DEPLOY_VER }} commit”
      
