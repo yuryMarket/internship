@@ -16,6 +16,9 @@ jobs:
 
     steps:    
  
+      - name: Git clone 
+        run: action/checkout@v1
+ 
       - name: Print the list of files/directories 
         run: ls
 
