@@ -44,9 +44,9 @@ jobs:
 
         - name: Print day, month, year
           run: |
-#            echo " Day - ${{ env.DAY__OF_THE_MONTH}}"
-            echo " Month -${{ env.month }}"
-            echo  "Year - ${{ env.YEAR }}"
+            echo " Day - ${{ env.DAY__OF_THE_MONTH}}"
+#            echo " Month -${{ env.month }}"
+#            echo  "Year - ${{ env.YEAR }}"
  
 #       - name: Print “My favorite day of week"
 #         run:  echo "My favorite day of week is “content of FAVORITE_DAY_OF_WEEK””
