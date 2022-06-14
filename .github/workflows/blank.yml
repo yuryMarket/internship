@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v1
  
       - name: Print the list of files/directories 
-        run: ls
+        run: ls -la
 
 #      - name: Print content of log.txt file.
 #        run: cat log.txt
