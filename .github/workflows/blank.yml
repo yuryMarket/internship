@@ -49,4 +49,4 @@ jobs:
         - name: Print “My favorite day of week"
           env: 
             my_favourite_day: ${{ secrets.FAVORITE_DAY_OF_WEEK }}
-          run:  echo "My favorite day of week is ”$my_favourite_day"
+          run:  echo "My favorite day of week is $my_favourite_day
