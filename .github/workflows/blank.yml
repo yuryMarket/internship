@@ -19,30 +19,30 @@ jobs:
       - name: Print the list of files/directories 
         run: ls
 
-      - name: Print content of log.txt file.
-        run: cat log.txt
- 
-      - name: Print content of log.txt file.
-        run:  echo “Hello from $DEPLOY_VER commit”
+#      - name: Print content of log.txt file.
+#        run: cat log.txt
+# 
+#      - name: Print content of log.txt file.
+#        run:  echo “Hello from $DEPLOY_VER commit”
      
-  job2:
-    runs-on: ubuntu-latest
-    needs: [job1]
-    env:
-      month: january
+#  job2:
+#    runs-on: ubuntu-latest
+#    needs: [job1]
+#    env:
+#      month: january
     
-    steps:  
-      - name: Contain day of the month
-        env:
-          DAY__OF_THE_MONTH: Monday
+#    steps:  
+#      - name: Contain day of the month
+#        env:
+#          DAY__OF_THE_MONTH: Monday
  
-      - name: Print the system date and time 
-        run: date
+#      - name: Print the system date and time 
+#        run: date
 
-      - name: Print day, month, year
-        run: echo " Day - $DAY__OF_THE_MONTH"
-             echo "Month -$month"
-             echo  "Year - $YEAR"
+#      - name: Print day, month, year
+#        run: echo " Day - $DAY__OF_THE_MONTH"
+#             echo "Month -$month"
+#             echo  "Year - $YEAR"
  
-      #- name: Print “My favorite day of week"
-      #  run:  echo "My favorite day of week is “content of FAVORITE_DAY_OF_WEEK””
+#      - name: Print “My favorite day of week"
+#        run:  echo "My favorite day of week is “content of FAVORITE_DAY_OF_WEEK””
