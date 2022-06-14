@@ -44,7 +44,7 @@ jobs:
 
         - name: Print day, month, year
           run: |
-            echo " Day - ${{ env.DAY__OF_THE_MONTH}}"
+#            echo " Day - ${{ env.DAY__OF_THE_MONTH}}"
             echo " Month -${{ env.month }}"
             echo  "Year - ${{ env.YEAR }}"
  
