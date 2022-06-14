@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  # This workflow contains a single job called "build"
+
   job1:
     runs-on: ubuntu-latest
 
@@ -40,7 +40,9 @@ jobs:
         run: date
 
       - name: Print day, month, year
-        run: 
+        run: echo " Day - $DAY__OF_THE_MONTH"
+             echo "Month -$month"
+             echo  "Year - $YEAR"
  
-      - name: Print: “My favorite day of week
-        run:  
+      #- name: Print “My favorite day of week"
+      #  run:  echo "My favorite day of week is “content of FAVORITE_DAY_OF_WEEK””
