@@ -1,0 +1,19 @@
+commit 0abcf01fe23525ce67e42415a23d059fff563735 (HEAD -> yury-new_feature)
+Author: Yury_Shubianok <yury.market.ma@gmail.com>
+Date:   Tue Jun 14 16:42:03 2022 +0400
+
+    Revert "Edit README"
+    
+    This reverts commit 81641919cf3b8d74e1a581b80df0e59443f98e04.
+
+commit 81641919cf3b8d74e1a581b80df0e59443f98e04
+Author: Yury_Shubianok <yury.market.ma@gmail.com>
+Date:   Tue Jun 14 16:40:40 2022 +0400
+
+    Edit README
+
+commit 5a2d5a5781812fbdcf50355724ccb3d9743bbc63 (origin/yury-new_feature)
+Author: Yury_Shubianok <yury.market.ma@gmail.com>
+Date:   Tue Jun 14 16:36:48 2022 +0400
+
+    Add .gitignore
