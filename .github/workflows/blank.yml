@@ -33,18 +33,16 @@ jobs:
     needs: [job1]
     env:
       month: january
+      DAY__OF_THE_MONTH: Monday
     
     steps:  
-        - name: Contain day of the month
-          env:
-            DAY__OF_THE_MONTH: Monday
- 
+         
         - name: Print the system date and time 
           run: date
 
         - name: Print day, month, year
           run: |
- #           echo " Day - ${{ env.DAY__OF_THE_MONTH}}"
+            echo " Day - ${{ env.DAY__OF_THE_MONTH}}"
             echo " Month -${{ env.month }}"
             echo  "Year - ${{ env.YEAR }}"
  
