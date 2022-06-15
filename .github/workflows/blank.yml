@@ -47,4 +47,4 @@ jobs:
             echo  "Year - ${{ env.YEAR }}"
  
         - name: Print “My favorite day of week"
-          run:  echo "My favorite day of week is "${{ secrets.FAVORITE_DAY_OF_WEEK }}"
+          run:  echo "My favorite day of week is ${{ secrets.FAVORITE_DAY_OF_WEEK }}"
