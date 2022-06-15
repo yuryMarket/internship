@@ -34,7 +34,7 @@ jobs:
     env:
       month: january
       DAY__OF_THE_MONTH: Monday
-      my_favorite_day: ${{ secrets.FAVORITE_DAY_OF_WEEK }}
+      my_favorite_day: "${{ secrets.FAVORITE_DAY_OF_WEEK }}"
     
     steps:  
          
