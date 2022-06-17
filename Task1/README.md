@@ -4,7 +4,7 @@
 
 # My tasks in Task 1
 
-1. ####  CCreate a Github account
+1. ### Create a Github account
 2. ### Create a new Github repository.
 3. ### Create a “Task1” folder in the master branch. Create and push ./Task1/README.md file.
 4. ### Create a new branch dev. Create and push any test file.
