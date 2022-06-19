@@ -2,7 +2,7 @@
 [http://3.67.202.19/](http://3.67.202.19/)  
 
 ## Result of the external part
-[https://task2vpc1screenshot.s3.eu-central-1.amazonaws.com/Screenshot%202022-06-18%2020.00.46.png](https://task2vpc1screenshot.s3.eu-central-1.amazonaws.com/Screenshot+2022-06-18+20.00.46.png)
+[https://task2vpc1screenshot.s3.eu-central-1.amazonaws.com/Screenshot+2022-06-18+20.00.46.png](https://task2vpc1screenshot.s3.eu-central-1.amazonaws.com/Screenshot+2022-06-18+20.00.46.png)
       
 
 # My tasks in Task 2

@@ -1,0 +1,20 @@
+#!/bin/bash
+apt update -y
+apt install -y nginx
+chkconfig nginx on
+service nginx start 
+echo "<html><H1>Hey, Dude</H1><p>Linux ip-10-0-0-11 5.15.0-1011-aws #14-Ubuntu SMP Wed Jun 1 20:54:22 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux</p><table class="iksweb"><tbody><tr><td>Filesystem</td><td>Size</td><td>Used </td><td>Avail </td><td>Use% </td><td>Mounted on</td></tr><tr><td>/dev/root</td><td>7.6G</td><td> 2.0G  </td><td>5.7G  </td><td>26% </td><td>/</td></tr><tr><td>tmpfs</td><td> 484M</td><td>0  </td><td>484M   </td><td>0% </td><td>/dev/shm</td></tr><tr><td>tmpfs</td><td>194M  </td><td>844K</td><td>193M   </td><td>1% </td><td>/run</td></tr><tr><td>tmpfs</td><td>5.0M</td><td>0  </td><td>5.0M   </td><td>0% </td><td>/run/lock</td></tr><tr><td>/dev/xvda15</td><td>105M  </td><td>5.3M  </td><td>100M   </td><td>5% </td><td>/boot/efi</td></tr><tr><td>tmpfs</td><td>97M  </td><td>4.0K   </td><td>97M   </td><td>1% </td><td>/run/user/1000</td></tr></tbody></table></html>"  >  /var/www/html/index.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
