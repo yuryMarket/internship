@@ -21,7 +21,7 @@ then
 yum update -y
 amazon-linux-extras install nginx1 -y
 service nginx start 
-echo $CONTENT > /var/www/html/index.html        
+echo $CONTENT > /usr/share/nginx/index.html        
 else 
 echo "you have not supported distribution"
 fi
