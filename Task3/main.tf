@@ -250,37 +250,7 @@ resource "aws_instance" "amz_task3" {
     tags = {
     name = "amz_task3"
     project = "task3"
-}
-user_data              = <<EOF
-#!/bin/sh
-
-. /etc/os-release
-
-CONTENT="<html><H1>Hey, Dude</H1><p>Linux ip-10-0-0-11 5.15.0-1011-aws #14-Ubuntu SMP Wed Jun 1 20:54:22 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux</p><table clas>"
-
-if [ $ID = "centos" ]
-then 
-yum update -y
-yum install -y nginx
-service nginx start 
-echo 
-echo $CONTENT > /usr/share/nginx/html/index.html
-elif [ $ID = "ubuntu" ] || [ $ID = "debian" ]
-then
-apt update -y
-apt install -y nginx
-service nginx start 
-echo $CONTENT > /var/www/html/index.html
-elif [ $ID = "amzn" ]
-then
-yum update -y
-amazon-linux-extras install nginx1 -y
-service nginx start 
-echo $CONTENT > /usr/share/nginx/html/index.html        
-else 
-echo "you have not supported distribution"
-fi
-  EOF
+  }
 }
 
 
