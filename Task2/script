@@ -9,19 +9,20 @@ then
 yum update -y
 yum install -y nginx
 service nginx start 
+echo 
 echo $CONTENT > /var/www/html/index.html
 elif [ $ID = "ubuntu" ] || [ $ID = "debian" ]
 then
 apt update -y
 apt install -y nginx
 service nginx start 
-echo $CONTENT > /var/www/html/index.html
+echo $CONTENT > /usr/share/nginx/html/index.html
 elif [ $ID = "amzn" ]
 then
 yum update -y
 amazon-linux-extras install nginx1 -y
 service nginx start 
-echo $CONTENT > /usr/share/nginx/index.html        
+echo $CONTENT > /usr/share/nginx/html/index.html        
 else 
 echo "you have not supported distribution"
 fi
