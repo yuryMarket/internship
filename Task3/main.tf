@@ -1,6 +1,8 @@
 provider "aws" {
     access_key = ""
+
     secret_key = ""
+
     region     = "eu-central-1"
 }
 
@@ -23,17 +25,12 @@ data "aws_ami" "data_amz" {
     }  
 }
 
-
-
-
-
-
 resource "aws_vpc" "vpc_task3" {
   cidr_block = "10.0.0.0/21"
   tags = {
     name = "vpc_task3"
     project = "task3"    
-}
+    }
 }
 
 resource "aws_subnet" "sub_vpc_task3" {
@@ -44,54 +41,35 @@ resource "aws_subnet" "sub_vpc_task3" {
    tags = {
     Name = "sub1_vpc_task3"
     project = "task3"
-  }
-}
-
-resource "aws_subnet" "sub_vpc_2_task3" {
-  vpc_id     = aws_vpc.vpc_task3.id
-  cidr_block = "10.0.2.0/26"
-  availability_zone = "eu-central-1a"
-   tags = {
-    Name = "sub1_vpc_2_task3"
-    project = "task3"
-  }
+    }
 }
 
 resource "aws_internet_gateway" "task3_gw" {
   vpc_id = aws_vpc.vpc_task3.id
   tags = {
     Name = "task3_gw"
-  }
+    }
 }
-
-
-
-
 
 resource "aws_route_table" "task3_rout" {
   vpc_id = aws_vpc.vpc_task3.id
 route {
     cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.task3_gw.id
-  }
+    }
 }
-
-
 
 resource "aws_route_table_association" "task3_rt_association" {
     subnet_id = aws_subnet.sub_vpc_task3.id
     route_table_id = aws_route_table.task3_rout.id
     }
 
-
-
-
 resource "aws_security_group" "task3_vpc_public_sec_group" {
   name = "task3_vps_sec_group"
   vpc_id = aws_vpc.vpc_task3.id
   tags = {
     project = "task3"
-  }
+    }
 }
 
 resource "aws_security_group_rule" "public_out" {
@@ -140,71 +118,16 @@ resource "aws_security_group_rule" "public_in_icmp" {
   security_group_id = aws_security_group.task3_vpc_public_sec_group.id
 }
 
-
-resource "aws_security_group" "task3_vpc_local_sec_group" {
-  name = "task3_vpc_local_sec_group"
-  vpc_id = aws_vpc.vpc_task3.id
-  tags = {
-    project = "task3"
-  }
-}
-
-resource "aws_security_group_rule" "local_out" {
-  type        = "egress"
-  from_port   = 0
-  to_port     = 0
-  protocol    = "-1"
-  cidr_blocks       = ["0.0.0.0/0"]
- 
-  security_group_id = aws_security_group.task3_vpc_local_sec_group.id
-}
- 
-resource "aws_security_group_rule" "local_in_ssh" {
-  type              = "ingress"
-  from_port         = 22
-  to_port           = 22
-  protocol          = "tcp"
-  cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.task3_vpc_local_sec_group.id
-}
- 
-resource "aws_security_group_rule" "local_in_http" {
-  type              = "ingress"
-  from_port         = 80
-  to_port           = 80
-  protocol          = "tcp"
-  cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.task3_vpc_local_sec_group.id
-}
- 
-resource "aws_security_group_rule" "local_in_https" {
-  type              = "ingress"
-  from_port         = 443
-  to_port           = 443
-  protocol          = "tcp"
-  cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.task3_vpc_local_sec_group.id
-}
-
-resource "aws_security_group_rule" "local_in_icmp" {
-  type              = "ingress"
-  from_port         = 8
-  to_port           = 0
-  protocol          = "icmp"
-  cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.task3_vpc_local_sec_group.id
-}
-
 resource "aws_instance" "ubuntu_task3" {
     ami = data.aws_ami.data_ubuntu.id
     instance_type = "t2.micro"
     subnet_id = aws_subnet.sub_vpc_task3.id
     vpc_security_group_ids = [ aws_security_group.task3_vpc_public_sec_group.id ]
-    key_name = "Inerhship_Test1"
+    key_name = "Francfurt"
     tags = {
     name = "ubuntu_task3"
     project = "task3"
-}
+    }
     user_data              = <<EOF
 #!/bin/sh
 
@@ -217,7 +140,7 @@ then
 yum update -y
 yum install -y nginx
 service nginx start 
-echo 
+echo
 echo $CONTENT > /usr/share/nginx/html/index.html
 elif [ $ID = "ubuntu" ] || [ $ID = "debian" ]
 then
@@ -244,13 +167,14 @@ sudo apt-get install -y docker-ce=5:20.10.17~3-0~ubuntu-jammy docker-ce-cli=5:20
 resource "aws_instance" "amz_task3" {
     ami = data.aws_ami.data_amz.id
     instance_type = "t2.micro"
-    subnet_id = aws_subnet.sub_vpc_2_task3.id
-    key_name = "Inerhship_Test1"
-    vpc_security_group_ids = [ aws_security_group.task3_vpc_local_sec_group.id ]
+    subnet_id = aws_subnet.sub_vpc_task3.id
+    associate_public_ip_address= "false"
+    key_name = "Francfurt"
+    vpc_security_group_ids = [ aws_security_group.task3_vpc_public_sec_group.id ]
     tags = {
     name = "amz_task3"
     project = "task3"
-  }
+    }
 }
 
 

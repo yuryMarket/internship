@@ -14,5 +14,18 @@
 1. ### Complete  step 1, but AMI ID cannot be hardcoded. You can hardcode operation system name, version, etc. 
 2. ### Step 3 read as: 
 ### EC2 CentOS should have outgoing and incoming access: ICMP, TCP/22, TCP/80, TCP/443, only to EC2 Ubuntu. 
+ - Загружаем на сервер EC2 Amazon Linux файл с ключом для доступа по SSH.  
+ - Отправляем команду вида: ssh -D8080 -fCqN user@server_ip для открытия туннеля.
+ - Открываем файл командой:
+vi /etc/yum.conf
+ - Добавляем запись: 
+proxy=socks5h://127.0.0.1:8080
+ 
+
 3. ### On EC2 CentOS install nginx (note. Remember about step 7, the task can be done in any way, it is not necessary to use terraform)
 ### Create a web page with the text “Hello World”. This page must be visible from the  EC2 Ubuntu.
+ - выполняем следующие команды по порядку:
+ - yum update
+ - yum install nginx
+ - service nginx start
+ - echo "<html>Hey, Dude<p>Linux ip-10-0-0-11 5.15.0-1011-aws #14-Ubuntu SMP Wed Jun 1 20:54:22 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux</p><table clas>" > /var/www/html/index.html
