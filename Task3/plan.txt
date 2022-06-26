@@ -1,7 +1,7 @@
-data.aws_ami.data_ubuntu: Reading...
 data.aws_ami.data_amz: Reading...
-data.aws_ami.data_ubuntu: Read complete after 1s [id=ami-057fb6ca30447d5c7]
-data.aws_ami.data_amz: Read complete after 1s [id=ami-0a1ee2fb28fe05df3]
+data.aws_ami.data_ubuntu: Reading...
+data.aws_ami.data_amz: Read complete after 0s [id=ami-0a1ee2fb28fe05df3]
+data.aws_ami.data_ubuntu: Read complete after 0s [id=ami-057fb6ca30447d5c7]
 
 Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
   + create
@@ -12,10 +12,11 @@ Terraform will perform the following actions:
   + resource "aws_instance" "amz_task3" {
       + ami                                  = "ami-0a1ee2fb28fe05df3"
       + arn                                  = (known after apply)
-      + associate_public_ip_address          = (known after apply)
+      + associate_public_ip_address          = false
       + availability_zone                    = (known after apply)
       + cpu_core_count                       = (known after apply)
       + cpu_threads_per_core                 = (known after apply)
+      + disable_api_stop                     = (known after apply)
       + disable_api_termination              = (known after apply)
       + ebs_optimized                        = (known after apply)
       + get_password_data                    = false
@@ -26,7 +27,7 @@ Terraform will perform the following actions:
       + instance_type                        = "t2.micro"
       + ipv6_address_count                   = (known after apply)
       + ipv6_addresses                       = (known after apply)
-      + key_name                             = "Inerhship_Test1"
+      + key_name                             = "Francfurt"
       + monitoring                           = (known after apply)
       + outpost_arn                          = (known after apply)
       + password_data                        = (known after apply)
@@ -50,7 +51,7 @@ Terraform will perform the following actions:
           + "project" = "task3"
         }
       + tenancy                              = (known after apply)
-      + user_data                            = "0bcf3c53c0d9633c5970bf737a74ee1af6179205"
+      + user_data                            = (known after apply)
       + user_data_base64                     = (known after apply)
       + user_data_replace_on_change          = false
       + vpc_security_group_ids               = (known after apply)
@@ -104,6 +105,12 @@ Terraform will perform the following actions:
           + device_index          = (known after apply)
           + network_card_index    = (known after apply)
           + network_interface_id  = (known after apply)
+        }
+
+      + private_dns_name_options {
+          + enable_resource_name_dns_a_record    = (known after apply)
+          + enable_resource_name_dns_aaaa_record = (known after apply)
+          + hostname_type                        = (known after apply)
         }
 
       + root_block_device {
@@ -128,6 +135,7 @@ Terraform will perform the following actions:
       + availability_zone                    = (known after apply)
       + cpu_core_count                       = (known after apply)
       + cpu_threads_per_core                 = (known after apply)
+      + disable_api_stop                     = (known after apply)
       + disable_api_termination              = (known after apply)
       + ebs_optimized                        = (known after apply)
       + get_password_data                    = false
@@ -138,7 +146,7 @@ Terraform will perform the following actions:
       + instance_type                        = "t2.micro"
       + ipv6_address_count                   = (known after apply)
       + ipv6_addresses                       = (known after apply)
-      + key_name                             = "Inerhship_Test1"
+      + key_name                             = "Francfurt"
       + monitoring                           = (known after apply)
       + outpost_arn                          = (known after apply)
       + password_data                        = (known after apply)
@@ -162,7 +170,7 @@ Terraform will perform the following actions:
           + "project" = "task3"
         }
       + tenancy                              = (known after apply)
-      + user_data                            = "bcabf7b2344adf6e59268298ceb5f79ac3bc66ee"
+      + user_data                            = "dda99fa96c66ad3ad39d398509c96c2d2504704f"
       + user_data_base64                     = (known after apply)
       + user_data_replace_on_change          = false
       + vpc_security_group_ids               = (known after apply)
@@ -216,6 +224,12 @@ Terraform will perform the following actions:
           + device_index          = (known after apply)
           + network_card_index    = (known after apply)
           + network_interface_id  = (known after apply)
+        }
+
+      + private_dns_name_options {
+          + enable_resource_name_dns_a_record    = (known after apply)
+          + enable_resource_name_dns_aaaa_record = (known after apply)
+          + hostname_type                        = (known after apply)
         }
 
       + root_block_device {
@@ -281,26 +295,6 @@ Terraform will perform the following actions:
       + subnet_id      = (known after apply)
     }
 
-  # aws_security_group.task3_vpc_local_sec_group will be created
-  + resource "aws_security_group" "task3_vpc_local_sec_group" {
-      + arn                    = (known after apply)
-      + description            = "Managed by Terraform"
-      + egress                 = (known after apply)
-      + id                     = (known after apply)
-      + ingress                = (known after apply)
-      + name                   = "task3_vpc_local_sec_group"
-      + name_prefix            = (known after apply)
-      + owner_id               = (known after apply)
-      + revoke_rules_on_delete = false
-      + tags                   = {
-          + "project" = "task3"
-        }
-      + tags_all               = {
-          + "project" = "task3"
-        }
-      + vpc_id                 = (known after apply)
-    }
-
   # aws_security_group.task3_vpc_public_sec_group will be created
   + resource "aws_security_group" "task3_vpc_public_sec_group" {
       + arn                    = (known after apply)
@@ -319,81 +313,6 @@ Terraform will perform the following actions:
           + "project" = "task3"
         }
       + vpc_id                 = (known after apply)
-    }
-
-  # aws_security_group_rule.local_in_http will be created
-  + resource "aws_security_group_rule" "local_in_http" {
-      + cidr_blocks              = [
-          + "0.0.0.0/0",
-        ]
-      + from_port                = 80
-      + id                       = (known after apply)
-      + protocol                 = "tcp"
-      + security_group_id        = (known after apply)
-      + self                     = false
-      + source_security_group_id = (known after apply)
-      + to_port                  = 80
-      + type                     = "ingress"
-    }
-
-  # aws_security_group_rule.local_in_https will be created
-  + resource "aws_security_group_rule" "local_in_https" {
-      + cidr_blocks              = [
-          + "0.0.0.0/0",
-        ]
-      + from_port                = 443
-      + id                       = (known after apply)
-      + protocol                 = "tcp"
-      + security_group_id        = (known after apply)
-      + self                     = false
-      + source_security_group_id = (known after apply)
-      + to_port                  = 443
-      + type                     = "ingress"
-    }
-
-  # aws_security_group_rule.local_in_icmp will be created
-  + resource "aws_security_group_rule" "local_in_icmp" {
-      + cidr_blocks              = [
-          + "0.0.0.0/0",
-        ]
-      + from_port                = 8
-      + id                       = (known after apply)
-      + protocol                 = "icmp"
-      + security_group_id        = (known after apply)
-      + self                     = false
-      + source_security_group_id = (known after apply)
-      + to_port                  = 0
-      + type                     = "ingress"
-    }
-
-  # aws_security_group_rule.local_in_ssh will be created
-  + resource "aws_security_group_rule" "local_in_ssh" {
-      + cidr_blocks              = [
-          + "0.0.0.0/0",
-        ]
-      + from_port                = 22
-      + id                       = (known after apply)
-      + protocol                 = "tcp"
-      + security_group_id        = (known after apply)
-      + self                     = false
-      + source_security_group_id = (known after apply)
-      + to_port                  = 22
-      + type                     = "ingress"
-    }
-
-  # aws_security_group_rule.local_out will be created
-  + resource "aws_security_group_rule" "local_out" {
-      + cidr_blocks              = [
-          + "0.0.0.0/0",
-        ]
-      + from_port                = 0
-      + id                       = (known after apply)
-      + protocol                 = "-1"
-      + security_group_id        = (known after apply)
-      + self                     = false
-      + source_security_group_id = (known after apply)
-      + to_port                  = 0
-      + type                     = "egress"
     }
 
   # aws_security_group_rule.public_in_http will be created
@@ -471,33 +390,6 @@ Terraform will perform the following actions:
       + type                     = "egress"
     }
 
-  # aws_subnet.sub_vpc_2_task3 will be created
-  + resource "aws_subnet" "sub_vpc_2_task3" {
-      + arn                                            = (known after apply)
-      + assign_ipv6_address_on_creation                = false
-      + availability_zone                              = "eu-central-1a"
-      + availability_zone_id                           = (known after apply)
-      + cidr_block                                     = "10.0.2.0/26"
-      + enable_dns64                                   = false
-      + enable_resource_name_dns_a_record_on_launch    = false
-      + enable_resource_name_dns_aaaa_record_on_launch = false
-      + id                                             = (known after apply)
-      + ipv6_cidr_block_association_id                 = (known after apply)
-      + ipv6_native                                    = false
-      + map_public_ip_on_launch                        = false
-      + owner_id                                       = (known after apply)
-      + private_dns_hostname_type_on_launch            = (known after apply)
-      + tags                                           = {
-          + "Name"    = "sub1_vpc_2_task3"
-          + "project" = "task3"
-        }
-      + tags_all                                       = {
-          + "Name"    = "sub1_vpc_2_task3"
-          + "project" = "task3"
-        }
-      + vpc_id                                         = (known after apply)
-    }
-
   # aws_subnet.sub_vpc_task3 will be created
   + resource "aws_subnet" "sub_vpc_task3" {
       + arn                                            = (known after apply)
@@ -554,3 +446,4 @@ Terraform will perform the following actions:
         }
     }
 
+Plan: 13 to add, 0 to change, 0 to destroy.
