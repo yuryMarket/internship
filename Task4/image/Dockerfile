@@ -6,7 +6,6 @@ ENV DEVOPS=${DEVOPS}
 
 RUN apt-get -y update 
 RUN apt-get -y install nginx 
-RUN sudo service nginx start
 RUN echo $DEVOPS > /var/www/html/index.html
 
 EXPOSE 80 
