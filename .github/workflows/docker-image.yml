@@ -22,6 +22,6 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v3
         with:
-          context: "{{defaultContext}}://github.com/yuryMarket/internship/tree/main/Task4/image"
+          context: "{{https://github.com/yuryMarket/internship/tree/main/Task4/image}}:mysubdir"
           push: true
           tags: 26091987/yury:latest
