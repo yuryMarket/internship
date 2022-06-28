@@ -29,6 +29,6 @@ jobs:
           context: Task4/image/
 #           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}yury:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/yury:latest
           
           
