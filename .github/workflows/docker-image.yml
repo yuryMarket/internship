@@ -26,8 +26,8 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ../../Task4/image/
-          file: ./Dockerfile
+          context: Task4/image/
+#           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}yury:latest
           
