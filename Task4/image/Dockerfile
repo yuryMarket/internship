@@ -1,7 +1,5 @@
 FROM ubuntu:22.04
 
-ARG DEVOPS=Yury
-
 ENV DEVOPS=${DEVOPS}
 
 RUN apt-get -y update 
