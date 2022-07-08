@@ -21,15 +21,42 @@ Big brother is watching  ....
 - sudo mysql -uroot -p'87_mellors' zabbix -e "set global innodb_strict_mode='ON';"  
 ### Указать пароль в файле конфигурации /etc/zabbix/zabbix_server.conf
 - DBPassword=87_mellors  
+Судя по всему данная команда не отработала. Пршлось дополнительно менять данный параметр здесь:
+sudo nano /etc/zabbix/zabbix_server.conf, иначе в GUI выдает ошибку, что сервер не запущен.
 ### Запустить zabbix сервер и zabbix агента
 - sudo systemctl restart zabbix-server zabbix-agent apache2
 - sudo systemctl enable zabbix-server zabbix-agent apache2  
 ### Перейти настройке Zabbix в браузере, перейти по адресу:
 - http://server_ip/zabbix
-###
-2. Prepare VM or instances. 
-- Install Zabbix agents on previously prepared servers or VM.
-EXTRA 1.2.2: Complete 1.2.1 using ansible
+### Оуществляем первоначальные настройки
+### Данные для входа:
+log:Admin
+pass:zabbix  
+[![Screenshot-from-2022-07-08-13-48-56.png](https://i.postimg.cc/tTPWgW4c/Screenshot-from-2022-07-08-13-48-56.png)](https://postimg.cc/N9s5JyT8)  
+
+2. ## Prepare VM or instances. 
+### Запустить 2 дополнительных инстанса
+- ## Install Zabbix agents on previously prepared servers or VM.
+### Сконфигурировать хост в интерфейсе zabbixa:
+[![Screenshot-from-2022-07-08-14-25-27.png](https://i.postimg.cc/MpPyCjPc/Screenshot-from-2022-07-08-14-25-27.png)](https://postimg.cc/dhCkdDKv)
+- В IP Adress вписываем IP нашего сервера, на который будет устанавливаться агент  
+### Подключиться к серверу, на который устанавливаем Zabbix Agent по SSH
+### Устанавить репозиторий
+- wget https://repo.zabbix.com/zabbix/6.2/ubuntu/pool/main/z/zabbix-release/zabbix-release_6.2-1+ubuntu22.04_all.deb
+- dpkg -i zabbix-release_6.2-1+ubuntu22.04_all.deb
+- apt update
+### Установить агента
+- apt install zabbix-agent
+### Изменить конфигурацию:
+- sudo nano /etc/zabbix/zabbix_agentd.conf
+Server=My_IP_server_agent
+ServerActive=My_IP_server_agent
+Hostname=(hostname из настройки в GUI)
+### Проверить доступность сервера
+[![Screenshot-from-2022-07-08-16-14-22.png](https://i.postimg.cc/3JrpX4vb/Screenshot-from-2022-07-08-16-14-22.png)](https://postimg.cc/HjKVHL3Q)
+### Аналогично настроить второй агент на втором сервере.
+## EXTRA 1.2.2:  
+Complete 1.2.1 using ansible
 1.3 Make several of your own dashboards, where to output data from your host/vm/container (one of them)
 1.4 Active check vs passive check - use both types.
 1.5 Make an agentless check of any resource (ICMP ping)
