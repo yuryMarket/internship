@@ -85,4 +85,4 @@ EXTRA 2.4: Set up filters on the Logstash side (get separate docker_container an
 3.1 Install Grafana
 3.2 Integrate with installed ELK
 3.3 Set up Dashboards
-3.4 Study features and settings
+3.4 Study features 
