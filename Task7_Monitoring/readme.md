@@ -37,21 +37,24 @@ pass:zabbix
 2. ## Prepare VM or instances. 
 ### Запустить 2 дополнительных инстанса
 - ## Install Zabbix agents on previously prepared servers or VM.
+### Открыть порт 10050
 ### Сконфигурировать хост в интерфейсе zabbixa:
 [![Screenshot-from-2022-07-08-14-25-27.png](https://i.postimg.cc/MpPyCjPc/Screenshot-from-2022-07-08-14-25-27.png)](https://postimg.cc/dhCkdDKv)
 - В IP Adress вписываем IP нашего сервера, на который будет устанавливаться агент  
 ### Подключиться к серверу, на который устанавливаем Zabbix Agent по SSH
 ### Устанавить репозиторий
 - wget https://repo.zabbix.com/zabbix/6.2/ubuntu/pool/main/z/zabbix-release/zabbix-release_6.2-1+ubuntu22.04_all.deb
-- dpkg -i zabbix-release_6.2-1+ubuntu22.04_all.deb
-- apt update
+- sudo dpkg -i zabbix-release_6.2-1+ubuntu22.04_all.deb
+- sudo apt update
 ### Установить агента
-- apt install zabbix-agent
+- sudo apt install zabbix-agent
 ### Изменить конфигурацию:
 - sudo nano /etc/zabbix/zabbix_agentd.conf
 Server=My_IP_server_agent
 ServerActive=My_IP_server_agent
 Hostname=(hostname из настройки в GUI)
+### Перезагрузить сервер
+- sudo service zabbix-agent start
 ### Проверить доступность сервера
 [![Screenshot-from-2022-07-08-16-14-22.png](https://i.postimg.cc/3JrpX4vb/Screenshot-from-2022-07-08-16-14-22.png)](https://postimg.cc/HjKVHL3Q)
 ### Аналогично настроить второй агент на втором сервере.
@@ -67,6 +70,11 @@ Complete 1.2.1 using ansible
 # ELK:
 Nobody is forgotten and nothing is forgotten.
 2.1 Install and configure ELK
+- Устанавливаем ELK в doker используя docker-compose. Клонируем следующий репозиторий https://github.com/deviantony/docker-elk. В файле docker-compose задействованы официальные образы Elasticsearch, Logstash и Kibana.
+- Файл docker-compose запускаем командой docker compose up -d
+- Открыть порт 5601
+- Административная панель Kibana доступна по адресу http://localhost:5601/
+- 
 2.2 Organize collection of logs from docker to ELK and receive data from running containers
 2.3 Customize your dashboards in ELK
 EXTRA 2.4: Set up filters on the Logstash side (get separate docker_container and docker_image fields from the message field)
