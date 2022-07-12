@@ -104,5 +104,9 @@ Password: admin
 [![Screenshot-from-2022-07-11-17-09-47.png](https://i.postimg.cc/pr2vf4cp/Screenshot-from-2022-07-11-17-09-47.png)](https://postimg.cc/1nYbPCQQ)
 
 ## 3.2 Integrate with installed ELK
+- На главной странице выбрать "Data sourcses"
+- В открывшмся диалоговом окне выбрать Elasticsearch
+- Затем добавить имя и хост elasticsearch. На этом базовая настройка завершена. Завершить и проверить соединение. 
+[![Screenshot-from-2022-07-12-17-44-06.png](https://i.postimg.cc/kGdxpVfD/Screenshot-from-2022-07-12-17-44-06.png)](https://postimg.cc/xJtJkdrS)
 ## 3.3 Set up Dashboards
 ## 3.4 Study features and settings
