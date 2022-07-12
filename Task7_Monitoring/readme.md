@@ -69,22 +69,25 @@ Complete 1.2.1 using ansible
 
 # ELK:
 Nobody is forgotten and nothing is forgotten.
-2.1 Install and configure ELK
+## 2.1 Install and configure ELK
 - Устанавливаем ELK в doker используя docker-compose. Клонируем следующий репозиторий https://github.com/deviantony/docker-elk. В файле docker-compose задействованы официальные образы Elasticsearch, Logstash и Kibana.
-- Файл docker-compose запускаем командой docker compose up -d
+- Файл docker-compose запускаем командой docker compose -f docker-compose.yml -f extensions/filebeat/filebeat-compose.yml up -d что бы за пустить в том числе Filebeat для сбора логов с текущего host.
 - Административная панель Kibana доступна по адресу http://localhost:5601/
 - Стандартные данные доступа:
 user: elastic
 password: changeme
+- Перейти в раздел Descovery и проверить сбор данных:
+[![Screenshot-from-2022-07-12-16-46-39.png](https://i.postimg.cc/Nj3g1g5d/Screenshot-from-2022-07-12-16-46-39.png)](https://postimg.cc/9DB52HP9)
 - 
-2.2 Organize collection of logs from docker to ELK and receive data from running containers
-2.3 Customize your dashboards in ELK
+## 2.2 Organize collection of logs from docker to ELK and receive data from running containers
+- Данный пункт закрывается установкой Filebeat агента, описанной выше
+## 2.3 Customize your dashboards in ELK
 EXTRA 2.4: Set up filters on the Logstash side (get separate docker_container and docker_image fields from the message field)
-2.5 Configure monitoring in ELK, get metrics from your running containers
-2.6 Study features and settings
+## 2.5 Configure monitoring in ELK, get metrics from your running containers
+## 2.6 Study features and settings
 
 # Grafana:
-3.1 Install Grafana
+## 3.1 Install Grafana
 - sudo apt update
 - sudo apt-get install -y gnupg2 curl software-properties-common
 - curl https://packages.grafana.com/gpg.key | sudo apt-key add -
@@ -100,6 +103,6 @@ Username: admin
 Password: admin
 [![Screenshot-from-2022-07-11-17-09-47.png](https://i.postimg.cc/pr2vf4cp/Screenshot-from-2022-07-11-17-09-47.png)](https://postimg.cc/1nYbPCQQ)
 
-3.2 Integrate with installed ELK
-3.3 Set up Dashboards
-3.4 Study features and settings
+## 3.2 Integrate with installed ELK
+## 3.3 Set up Dashboards
+## 3.4 Study features and settings
