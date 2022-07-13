@@ -82,6 +82,14 @@ password: changeme
 ## 2.2 Organize collection of logs from docker to ELK and receive data from running containers
 - Данный пункт закрывается установкой Filebeat агента, описанной выше
 ## 2.3 Customize your dashboards in ELK
+- В разделе descovery добавить новый паттерн индексации логов 
+[![Screenshot-from-2022-07-13-12-37-40.png](https://i.postimg.cc/pXBr4zZ7/Screenshot-from-2022-07-13-12-37-40.png)](https://postimg.cc/jLLRJWBQ)
+- перейти в раздел dashboard 
+[![Screenshot-from-2022-07-13-12-40-26.png](https://i.postimg.cc/25hP9FdL/Screenshot-from-2022-07-13-12-40-26.png)](https://postimg.cc/WDpWhZHs)
+- нажать great visualistaion, при помощи фильтра найти интересующие логи и перетянуть их в интерактивную область 
+[![Screenshot-from-2022-07-13-12-47-19.png](https://i.postimg.cc/6QJJt1Yp/Screenshot-from-2022-07-13-12-47-19.png)](https://postimg.cc/pmZ1BCww)
+- выбрать интересующий формат отображения 
+[![Screenshot-from-2022-07-13-12-49-39.png](https://i.postimg.cc/jdbMqYr9/Screenshot-from-2022-07-13-12-49-39.png)](https://postimg.cc/kDTQwZGF)
 EXTRA 2.4: Set up filters on the Logstash side (get separate docker_container and docker_image fields from the message field)
 ## 2.5 Configure monitoring in ELK, get metrics from your running containers
 ## 2.6 Study features and settings
