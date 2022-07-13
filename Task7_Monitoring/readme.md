@@ -96,16 +96,18 @@ EXTRA 2.4: Set up filters on the Logstash side (get separate docker_container an
 
 # Grafana:
 ## 3.1 Install Grafana
-- sudo apt update
-- sudo apt-get install -y gnupg2 curl software-properties-common
-- curl https://packages.grafana.com/gpg.key | sudo apt-key add -
-- sudo add-apt-repository "deb https://packages.grafana.com/oss/deb stable main"
-- sudo apt-get update
-- sudo apt-get -y install grafana
-- sudo systemctl enable --now grafana-server
-Проверить статус:
-- systemctl status grafana-server.service 
-- стандартный порт для входа - 3000, не забыть открыть
+-добавил в файл docker-compose установку Grafana:
+grafana: 
+      image: grafana/grafana:7.5.7
+      ports:
+        - 3000:3000
+      restart: unless-stopped
+      networks:
+      - elk
+      volumes:
+        - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+        - grafana-data:/var/lib/grafana
+- стандартный порт для входа - 3000
 - стандартные данные для входа:
 Username: admin
 Password: admin
@@ -114,7 +116,15 @@ Password: admin
 ## 3.2 Integrate with installed ELK
 - На главной странице выбрать "Data sourcses"
 - В открывшмся диалоговом окне выбрать Elasticsearch
-- Затем добавить имя и хост elasticsearch. На этом базовая настройка завершена. Завершить и проверить соединение. 
-[![Screenshot-from-2022-07-12-17-44-06.png](https://i.postimg.cc/kGdxpVfD/Screenshot-from-2022-07-12-17-44-06.png)](https://postimg.cc/xJtJkdrS)
+- Затем добавить имя и хост elasticsearch. 
+- Добавить данные для входа:
+[![Screenshot-from-2022-07-13-17-35-09.png](https://i.postimg.cc/cHGhbkwy/Screenshot-from-2022-07-13-17-35-09.png)](https://postimg.cc/2qTnqw02)
+На этом базовая настройка завершена. Завершить и проверить соединение. 
+
 ## 3.3 Set up Dashboards
+- перейти в раздел Dashboards и нажать creat new dashboard
+[![Screenshot-from-2022-07-13-12-55-34.png](https://i.postimg.cc/Jnf5nnpf/Screenshot-from-2022-07-13-12-55-34.png)](https://postimg.cc/G8jygcwK)
+- настроить дашборд выбрав необходимые метрики и параметры
+ [![Screenshot-from-2022-07-13-18-01-44.png](https://i.postimg.cc/zBh1KfYw/Screenshot-from-2022-07-13-18-01-44.png)](https://postimg.cc/HcTKCdxj)
+
 ## 3.4 Study features and settings
